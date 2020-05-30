@@ -66,6 +66,7 @@ public class DetailsController {
 
     Details updatedDetails = repository.findById(id)
         .map(details -> {
+          details.setIsbn(newDetails.getIsbn());
           details.setAuthor(newDetails.getAuthor());
           details.setYear(newDetails.getYear());
           details.setType(newDetails.getType());

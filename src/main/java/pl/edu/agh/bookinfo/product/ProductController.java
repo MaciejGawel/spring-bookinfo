@@ -66,6 +66,7 @@ public class ProductController {
 
     Product updatedProduct = repository.findById(id)
         .map(product -> {
+          product.setIsbn(newProduct.getIsbn());
           product.setTitle(newProduct.getTitle());
           product.setDescription(newProduct.getDescription());
           return repository.save(product);

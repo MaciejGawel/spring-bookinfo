@@ -19,10 +19,10 @@ public class LoadDatabase {
   @Bean
   CommandLineRunner initDatabase(ProductRepository productRepository, DetailsRepository detailsRepository) {
     return args -> {
-      productRepository.save(new Product("The Comedy of Errors", "The Comedy of Errors is one of William Shakespeare early plays."));
+      productRepository.save(new Product("978-3-16-148410-0", "The Comedy of Errors", "The Comedy of Errors is one of William Shakespeare early plays."));
       productRepository.findAll().forEach(product -> log.info("Preloaded " + product));
 
-      detailsRepository.save(new Details("William Shakespeare", 1595, "paperback", 200, "PublisherA", "English"));
+      detailsRepository.save(new Details("978-3-16-148410-0", "William Shakespeare", 1595, "paperback", 200, "PublisherA", "English"));
       detailsRepository.findAll().forEach(details -> log.info("Preloaded " + details));
     };
   }

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 public class Details {
 
   private @Id @GeneratedValue Long id;
+  private String isbn;
   private String author;
   private int year;
   private String type;
@@ -20,8 +21,9 @@ public class Details {
   Details() {
   }
 
-  public Details(String author, int year, String type, int pages, String publisher,
-      String language) {
+  public Details(String isbn, String author, int year, String type, int pages,
+      String publisher, String language) {
+    this.isbn = isbn;
     this.author = author;
     this.year = year;
     this.type = type;
@@ -36,6 +38,14 @@ public class Details {
 
   public void setId(Long id) {
     this.id = id;
+  }
+
+  public String getIsbn() {
+    return this.isbn;
+  }
+
+  public void setIsbn(String isbn) {
+    this.isbn = isbn;
   }
 
   public String getAuthor() {
@@ -97,6 +107,7 @@ public class Details {
     Details details = (Details) o;
 
     return Objects.equals(this.id, details.id)
+      && Objects.equals(this.isbn, details.isbn)
       && Objects.equals(this.author, details.author)
       && Objects.equals(this.year, details.year)
       && Objects.equals(this.type, details.type)
@@ -107,14 +118,14 @@ public class Details {
 
   @Override
   public int hashCode() {
-    return Objects.hash(this.id, this.author, this.year, this.type, this.pages, this.publisher, this.language);
+    return Objects.hash(this.id, this.isbn, this.author, this.year, this.type, this.pages, this.publisher, this.language);
   }
 
   @Override
   public String toString() {
-    return "Details{id=" + this.id + ", author='" + this.author
-      + "', year=" + this.year + ", type=" + this.type
-      + "', pages=" + this.pages + ", publisher=" + this.publisher
-      + "', language=" + this.language + "'}";
+    return "Details{id=" + this.id + ", isbn='" + this.isbn
+      + ", author='" + this.author + "', year=" + this.year
+      + ", type=" + this.type + "', pages=" + this.pages
+      + ", publisher=" + this.publisher + "', language=" + this.language + "'}";
   }
 }

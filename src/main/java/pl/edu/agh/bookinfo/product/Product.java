@@ -10,12 +10,14 @@ import javax.persistence.Id;
 public class Product {
 
   private @Id @GeneratedValue Long id;
+  private String isbn;
   private String title;
   private String description;
 
   Product() {}
 
-  public Product(String title, String description) {
+  public Product(String isbn, String title, String description) {
+    this.isbn = isbn;
     this.title = title;
     this.description = description;
   }
@@ -26,6 +28,14 @@ public class Product {
 
   public void setId(Long id) {
     this.id = id;
+  }
+
+  public String getIsbn() {
+    return this.isbn;
+  }
+
+  public void setIsbn(String isbn) {
+    this.isbn = isbn;
   }
 
   public String getTitle() {
@@ -55,18 +65,20 @@ public class Product {
     Product product = (Product) o;
 
     return Objects.equals(this.id, product.id)
+      && Objects.equals(this.isbn, product.isbn)
       && Objects.equals(this.title, product.title)
       && Objects.equals(this.description, product.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(this.id, this.title, this.description);
+    return Objects.hash(this.id, this.isbn, this.title, this.description);
   }
 
   @Override
   public String toString() {
-    return "Product{id=" + this.id + ", title='" + this.title
+    return "Product{id=" + this.id + ", isbn='" + this.isbn
+      + ", title='" + this.title
       + "', description='" + this.description + "'}";
   }
 }
