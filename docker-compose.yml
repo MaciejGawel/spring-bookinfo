@@ -1,4 +1,13 @@
-bookinfo:
-  image: bookinfo:0.0.1-SNAPSHOT
-  ports:
-   - 8080:8080
+version: '3'
+services:
+  bookinfo:
+    image: bookinfo:0.0.1-SNAPSHOT
+  client:
+    build:
+      context: ./client
+    environment:
+      - BOOKINFO_URL=http://bookinfo:8080
+    depends_on:
+      - bookinfo
+    links:
+      - bookinfo
