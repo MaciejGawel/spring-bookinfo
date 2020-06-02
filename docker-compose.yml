@@ -1,7 +1,7 @@
 version: '3'
 services:
   bookinfo:
-    image: bookinfo:0.0.1-SNAPSHOT
+    image: bookinfo/monolith
   client:
     build:
       context: ./client
